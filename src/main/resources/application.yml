@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: transfer_bank
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank
+    username: 'postgres'
+    password: 'root'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: 'true'
+  rabbitmq:
+    addresses: localhost:5672
+
+logging:
+  file:
+    name: logs/banks.log
+
+scheduler:
+  interval: 10000
+
+app:
+  client_exchange: clientExchange
+  client_queue: clientQueue
