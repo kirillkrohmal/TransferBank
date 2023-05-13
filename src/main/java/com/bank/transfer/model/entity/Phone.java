@@ -10,8 +10,7 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "phone_data")
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 public class Phone {
 

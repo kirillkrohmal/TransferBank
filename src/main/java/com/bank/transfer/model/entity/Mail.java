@@ -9,8 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 @Entity
 @Table(name = "email_data")
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 public class Mail {
     @Id

@@ -12,8 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @SequenceGenerator(name = "sequence", sequenceName = "MY_CUSTOM_SEQ", allocationSize=1)
 public class Person implements Serializable {

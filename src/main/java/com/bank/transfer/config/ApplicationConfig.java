@@ -1,5 +1,6 @@
 package com.bank.transfer.config;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
@@ -18,15 +19,14 @@ import java.util.Locale;
 
 import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
 
-@Getter
-@Setter
+@Data
 @Configuration
 @EnableScheduling
 @EnableAsync
 @EnableCaching
 @ConditionalOnProperty(name = "scheduler.enabled", matchIfMissing = true)
 @ConfigurationProperties("app")
-public class AppConfig {
+public class ApplicationConfig {
 
 	private String clientExchange;
 	private String clientQueue;
@@ -40,11 +40,6 @@ public class AppConfig {
 	}
 
 	@Bean
-	public Locale locale() {
-		return new Locale("ru");
-	}
-
-	@Bean
 	public ModelMapper modelMapper() {
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration()
@@ -54,4 +49,10 @@ public class AppConfig {
 		.setFieldAccessLevel(PRIVATE);
 		return mapper;
 	}
+
+	@Bean
+	public Locale locale() {
+		return new Locale("ru");
+	}
+
 }

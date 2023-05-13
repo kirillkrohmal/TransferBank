@@ -8,8 +8,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +22,7 @@ public class PersonDto implements Serializable {
 
 	@JsonFormat(pattern = "dd.MM.yyyy")
 	@DateTimeFormat(pattern = "dd.MM.yyyy")
-	private LocalDate birthdate;
+	private LocalDate birthday;
 
 	@Size(min = 8, max = 400)
 	private String password;

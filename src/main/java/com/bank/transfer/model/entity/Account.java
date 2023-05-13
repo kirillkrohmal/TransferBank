@@ -12,8 +12,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Entity
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 public class Account {
     @Id
