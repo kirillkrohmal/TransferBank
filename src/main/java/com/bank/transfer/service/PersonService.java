@@ -11,7 +11,6 @@ import java.time.LocalDate;
 public interface PersonService {
 
 
-    @Cacheable(value = "clientByPhoneCache", key = "#phone"/*,condition = "#phone.equals(...)"*/)
     Person getPersonByPhone(String phone);
 
     Person getPersonByMail(String mail);

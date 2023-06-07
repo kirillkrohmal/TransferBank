@@ -1,0 +1,53 @@
+# крайне внимательно к созданию схемы и таблиц средствами jpa-hibernate!
+
+# к созданию схемы причастны
+# javax.persistence.schema-generation.database.action
+# и jpa.properties.hibernate.hbm2dll.create_namespaces
+
+#к выбору в качестве активной - default_schema
+# и для гарантии datasource.url (currentSchema)
+
+spring:
+  application:
+    name: TransferBank
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=bank
+    username: postgres
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    generate-ddl: true
+    defer-datasource-initialization: true
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            database:
+              action: create
+      hibernate:
+        ddl-auto: update
+        hbm2dll:
+          create_namespaces: true
+        show_sql: false
+        format_sql: true
+        connection:
+          autocommit: false
+        default_schema: bks
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        temp:
+          use_jdbc_metadata_defaults: false
+  sql:
+    init:
+      mode: always
+
+logging:
+  file:
+    name: logs/banks.log
+
+scheduler:
+  interval: 30000
+
+app:
+  client_exchange: clientExchange
+  client_queue: clientQueue

@@ -43,7 +43,6 @@ public class PersonServiceImpl implements PersonService {
     private final ModelMapper modelMapper;
 
     @Override
-    @Cacheable(value = "clientByPhoneCache", key = "#phone"/*,condition = "#phone.equals(...)"*/)
     public Person getPersonByPhone(String phone) {
         Phone p = phoneRepository.getByPhone(phone).orElseThrow(() -> PersonException.of(messageCreator.createMessage(PHONE_NOT_FOUND)));
 

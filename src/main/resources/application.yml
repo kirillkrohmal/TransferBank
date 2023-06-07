@@ -5,14 +5,39 @@ spring:
     url: jdbc:postgresql://localhost:5432/bank
     username: 'postgres'
     password: 'root'
+
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: false
     properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: 'true'
+      javax:
+        persistence:
+          schema-generation:
+            database:
+              action: none
     hibernate:
-      ddl-auto: update
-    show-sql: 'true'
+      ddl-auto: create-drop
+      hbm2dll:
+        create_namespaces: true
+      show_sql: true
+      format_sql: true
+      connection:
+        autocommit: false
+      current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+      temp:
+        use_jdbc_metadata_defaults:
+          false
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yml
+    database-change-log-lock-table: bank_databasechangeloglock
+    database-change-log-table: bank_databasechangelog
+
+
+
   rabbitmq:
     addresses: localhost:5672
 
